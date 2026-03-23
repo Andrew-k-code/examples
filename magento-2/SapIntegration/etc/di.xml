@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Dependency Injection Configuration -->
+    <preference for="AndrewKode\SapIntegration\Model\Config"
+        type="AndrewKode\SapIntegration\Model\Config" />
+    <preference for="AndrewKode\SapIntegration\Model\Api\SapClient"
+        type="AndrewKode\SapIntegration\Model\Api\SapClient" />
+
+    <!-- Plugin to make cron schedule configurable from admin -->
+    <type name="Magento\Cron\Model\Schedule">
+        <plugin name="sapintegration_schedule"
+            type="AndrewKode\SapIntegration\Plugin\Cron\SchedulePlugin" />
+    </type>
+</config>

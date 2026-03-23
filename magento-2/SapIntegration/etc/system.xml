@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="sapintegration" translate="label" type="text" sortOrder="130" showInDefault="1"
+            showInWebsite="1" showInStore="1">
+            <label>SAP Integration</label>
+            <tab>general</tab>
+            <resource>AndrewKode_SapIntegration::config</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1"
+                showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>Enable SAP Integration</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="api_url" translate="label" type="text" sortOrder="20" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>SAP API URL</label>
+                    <validate>required-entry validate-url</validate>
+                </field>
+            </group>
+
+            <group id="credentials" translate="label" type="text" sortOrder="20" showInDefault="1"
+                showInWebsite="1" showInStore="1">
+                <label>Credentials</label>
+
+                <field id="username" translate="label" type="text" sortOrder="10" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <label>SAP Username</label>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="password" translate="label" type="password" sortOrder="20"
+                    showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SAP Password</label>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+
+                <field id="api_key" translate="label" type="password" sortOrder="30"
+                    showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SAP API Key</label>
+                    <validate>required-entry</validate>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+            </group>
+
+            <group id="sync_settings" translate="label" type="text" sortOrder="30" showInDefault="1"
+                showInWebsite="1" showInStore="1">
+                <label>Sync Settings</label>
+
+                <field id="sync_enabled" translate="label" type="select" sortOrder="10"
+                    showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Order Sync</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="sync_schedule" translate="label" type="text" sortOrder="20"
+                    showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sync Schedule (Cron Expression)</label>
+                    <comment>Default: */5 * * * * (every 5 minutes)</comment>
+                </field>
+
+                <field id="order_status" translate="label" type="multiselect" sortOrder="30"
+                    showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Status to Sync</label>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                    <comment>Select which order statuses should be synced to SAP</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

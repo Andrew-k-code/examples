@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="sapintegration_sync_orders"
+            instance="AndrewKode\SapIntegration\Cron\SyncOrders" method="execute">
+            <!-- Default schedule: */5 * * * * (every 5 minutes)
+                 Can be overridden in Admin > Stores > Configuration > SAP Integration > Sync Settings > Sync
+            Schedule -->
+            <schedule>*/5 * * * *</schedule>
+        </job>
+    </group>
+</config>
